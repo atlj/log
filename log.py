@@ -13,6 +13,6 @@ class log(object):
         if not os.path.exists(os.path.join(self.log_directory, self.logname)) :
             self.logfile = open(os.path.join(self.log_directory, self.logname), "w")
          
-        self.logfile.write(time.ctime().split(" ")[3]+" >> "+"["+self.logtype+"]"+" >> "+data+"\n"), 
+        self.logfile.write(time.ctime().replace("  ", " ").split(" ")[3]+" >> "+"["+self.logtype+"]"+" >> "+data+"\n"), 
         self.logfile.flush()
         os.fsync(self.logfile.fileno())
