@@ -13,7 +13,7 @@ class log(object):
         
         if not os.path.exists(os.path.join(self.log_directory, self.logname)) :
             self.logfile = open(os.path.join(self.log_directory, self.logname), "w")
-        with open(self.log_directory, ".lastlog", "w") as dosya:
+        with open(os.path.join(self.log_directory,".lastlog"), "w") as dosya:
             dosya.write(self.logname)
         self.logfile.write(time.ctime().replace("  ", " ").split(" ")[3]+" >> "+"["+self.logtype+"]"+" >> "+data+"\n"), 
         self.logfile.flush()
