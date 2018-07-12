@@ -1,5 +1,6 @@
 import os, time
 cdir = os.path.dirname(os.path.realpath(__file__))
+__author__ = "atlj"
 class log(object):
     def __init__(self, name, directory = cdir):
         self.logtype = name
@@ -12,7 +13,8 @@ class log(object):
         
         if not os.path.exists(os.path.join(self.log_directory, self.logname)) :
             self.logfile = open(os.path.join(self.log_directory, self.logname), "w")
-         
+        with open(self.log_directory, ".lastlog", "w") as dosya:
+            dosya.write(self.logname)
         self.logfile.write(time.ctime().replace("  ", " ").split(" ")[3]+" >> "+"["+self.logtype+"]"+" >> "+data+"\n"), 
         self.logfile.flush()
         os.fsync(self.logfile.fileno())
