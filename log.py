@@ -4,7 +4,7 @@ class log(object):
     def __init__(self, name, directory = cdir):
         self.logtype = name
         self.logname = name+" " + time.ctime()+".log"
-        self.log_directory = os.path.join(directory, "logs")
+        self.log_directory = os.path.join(directory, "AtljLog")
     
     def write(self, data):
         if not os.path.exists(self.log_directory):
